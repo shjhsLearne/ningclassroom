@@ -76,6 +76,26 @@
             margin-bottom: 20px;
         }
 
+        /* ★ 新增：推薦理由區塊樣式 */
+        .reason-box {
+            background-color: #E3F2FD;
+            border-left: 8px solid #1565C0;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-size: 26px;
+            color: #0D47A1;
+            line-height: 1.7;
+        }
+
+        .reason-title {
+            font-weight: bold;
+            color: #D84315;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
         /* 影片說明文字 */
         .instruction {
             font-size: 26px;
@@ -175,6 +195,36 @@
             border: 3px solid #C8E6C9;
         }
 
+        /* ★ 新增：最後的總結選歌建議區塊 */
+        .summary-box {
+            background-color: #FFF8E1;
+            border: 5px solid #FFC107;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .summary-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #FFE082;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-highlight {
+            color: #D32F2F;
+            font-size: 30px;
+        }
+
         /* 底部巨大提醒 */
         .footer-reminder {
             background-color: #E3F2FD;
@@ -211,6 +261,12 @@
         <!-- 第一首歌：分享 -->
         <div class="song-card">
             <h2 class="song-title">🎵 第一首：分享 (伍思凱)</h2>
+            
+            <div class="reason-box">
+                <span class="reason-title">💡 推薦理由：橫跨時空的經典，最貼合「同窗情誼」。</span>
+                這首歌是畢業典禮的「神曲」，但對成人學員來說意義更深。歌詞中提到的「與你分享的快樂，勝過獨自擁有」，完美詮釋了成年人在兼顧工作、家庭與學業的過程中，那種互相扶持、交換心聲的情感。它的旋律大器且溫暖，非常適合在典禮大合唱或回顧影片時播放。
+            </div>
+
             <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
             
             <div class="video-wrapper">
@@ -274,6 +330,12 @@
         <!-- 第二首歌：乾杯 -->
         <div class="song-card">
             <h2 class="song-title">🎵 第二首：乾杯 (五月天)</h2>
+            
+            <div class="reason-box">
+                <span class="reason-title">💡 推薦理由：致敬逝去的時光，回望人生的「多重身份」。</span>
+                成人學員往往比一般學生更感嘆時間的流逝。《乾杯》的歌詞從童年唱到老年，那種「懷念過去、珍惜當下」的氛圍，能讓在社會打滾多年後又回到校園的人深刻共鳴。這不僅是對學業的結業，更是對人生某個階段辛勞的慰勞。
+            </div>
+
             <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
             
             <div class="video-wrapper">
@@ -371,6 +433,12 @@
         <!-- 第三首歌：逆風飛翔 -->
         <div class="song-card">
             <h2 class="song-title">🎵 第三首：逆風飛翔 (蕭煌奇)</h2>
+            
+            <div class="reason-box">
+                <span class="reason-title">💡 推薦理由：象徵「成年後的韌性」與「自我突破」。</span>
+                成人的求學之路往往是「逆風」而行（可能要犧牲休息時間、頂著壓力）。這首歌比起其他校園民謠，多了更多力量感與成熟的堅毅。「逆著風也要飛翔」這句話，正是對這群不畏年齡限制、勇敢追求自我進修者的最高致敬。
+            </div>
+
             <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
             
             <div class="video-wrapper">
@@ -445,6 +513,13 @@
 安安靜靜 我和你 笑看那些不如意
 只要你 不怕風雨 你看人生多麼的 美麗</div>
             </div>
+        </div>
+
+        <!-- ★ 新增：選歌建議總結區塊 -->
+        <div class="summary-box">
+            <div class="summary-item">💖 如果想要氣氛溫馨、眼眶泛紅：<br>👉 請選 <span class="summary-highlight">《分享》</span></div>
+            <div class="summary-item">🍻 如果想要回憶湧現、感嘆人生：<br>👉 請選 <span class="summary-highlight">《乾杯》</span></div>
+            <div class="summary-item">🦅 如果想要勵志激昂、充滿希望：<br>👉 請選 <span class="summary-highlight">《逆風飛翔》</span></div>
         </div>
 
         <!-- 結尾再次提醒 -->
