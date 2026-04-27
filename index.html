@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進修部301畢業歌曲投票</title>
+    <style>
+        /* 全域設定：針對長輩優化的大字體與易讀字型 */
+        body {
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+            background-color: #FFFDE7; /* 溫暖的米黃色背景，保護眼睛 */
+            color: #222222;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 頂部橫幅 */
+        .header-banner {
+            background-color: #E65100;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        /* 主要內容容器 */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 首頁說明區塊 */
+        .intro-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            background-color: #FFF3E0;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 12px solid #FF9800;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #D32F2F; /* 紅色高亮 */
+            background: #FFEBEE;
+            padding: 5px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* 歌曲獨立區塊 */
+        .song-card {
+            border: 4px solid #4CAF50;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            background-color: #FAFAFA;
+        }
+
+        .song-title {
+            font-size: 38px;
+            color: #2E7D32;
+            margin-top: 0;
+            border-bottom: 3px dashed #81C784;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* 影片說明文字 */
+        .instruction {
+            font-size: 26px;
+            color: #D84315;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #FFCCBC;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* YouTube 影片容器 (保持 16:9 比例) */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ★ 新增：YouTube 備用按鈕的樣式 */
+        .youtube-btn-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .youtube-btn {
+            display: inline-block;
+            background-color: #FF0000; /* 換回 YouTube 的紅色 */
+            color: #FFFFFF;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 3px solid #CC0000;
+        }
+        
+        .youtube-btn:active {
+            background-color: #CC0000;
+            transform: scale(0.98);
+        }
+
+        /* 歌詞區塊設定 */
+        .lyrics-container {
+            background-color: #E8F5E9;
+            border: 3px solid #81C784;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .lyrics-hint {
+            font-size: 24px;
+            color: #1B5E20;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #C8E6C9;
+            padding-bottom: 10px;
+        }
+
+        .lyrics-box {
+            font-size: 26px; /* 特大歌詞字體 */
+            line-height: 1.8;
+            color: #222;
+            height: 350px; /* 固定高度，讓長輩在框內滑動即可 */
+            overflow-y: auto;
+            white-space: pre-wrap; /* 保留換行格式 */
+            padding-right: 15px;
+        }
+
+        /* 特別放大加粗捲軸，方便長輩辨識與觸控 */
+        .lyrics-box::-webkit-scrollbar {
+            width: 24px; 
+        }
+        .lyrics-box::-webkit-scrollbar-track {
+            background: #C8E6C9; 
+            border-radius: 12px;
+        }
+        .lyrics-box::-webkit-scrollbar-thumb {
+            background: #4CAF50; 
+            border-radius: 12px;
+            border: 3px solid #C8E6C9;
+        }
+
+        /* 底部巨大提醒 */
+        .footer-reminder {
+            background-color: #E3F2FD;
+            border: 6px dashed #1565C0;
+            color: #0D47A1;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 36px;
+            font-weight: bold;
+            border-radius: 15px;
+            margin-top: 20px;
+            line-height: 1.6;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        🎓 進修部301 畢業歌曲試聽站 🎓
+    </div>
+
+    <div class="container">
+        
+        <!-- 首頁敘述 -->
+        <div class="intro-text">
+            各位301的同學們～我們即將迎來畢業啦～～ 🎉<br><br>
+            我們要來決定最後在大螢幕上要播放的背景音樂是哪首歌？<br>
+            請同學們利用此網站先聽聽看哪首歌您比較喜歡，
+            <br>
+            <span class="highlight">再幫我到「進修部301」的群組進行投票唷！！</span>
+        </div>
+
+        <!-- 第一首歌：分享 -->
+        <div class="song-card">
+            <h2 class="song-title">🎵 第一首：分享 (伍思凱)</h2>
+            <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
+            
+            <div class="video-wrapper">
+                <!-- 內嵌雲端硬碟影片 (注意最後是 /preview) -->
+                <iframe src="https://drive.google.com/file/d/1OQ0AX3ZPhCuOTkk2-G-6sN2lxNvhxyVV/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 防呆備用按鈕 -->
+            <div class="youtube-btn-container">
+                <a href="https://www.youtube.com/watch?v=BwwT_XZir00&list=RDBwwT_XZir00&start_radio=1" target="_blank" class="youtube-btn">
+                    👉 如果影片無法播放，請點此前往 YouTube 聆聽 👈
+                </a>
+            </div>
+
+            <div class="lyrics-container">
+                <p class="lyrics-hint">👇 歌詞在下方（手指可以上下滑動看歌詞）</p>
+                <div class="lyrics-box">作詞：姚謙     作曲：伍思凱
+(前奏)
+時間已做了選擇 什麼人叫做朋友
+偶而碰頭 心情卻能一點就通
+因為我們曾有過 理想類似的生活
+太多感受 絕非三言兩語能形容
+可能有時我們顧慮太多
+太多決定需要我們去選擇
+擔心會犯錯 難免會受挫
+幸好一路上有你陪我
+
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇窗 能讓視野不同
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇門 讓世界開闊
+
+(間奏)
+
+因為我們曾有過 理想類似的生活
+太多感受 絕非三言兩語能形容
+可能有時我們顧慮太多
+顧慮太多 ～
+太多決定需要我們去選擇
+擔心會犯錯 難免會受挫
+擔心會犯錯
+難免會受挫
+幸好一路上有你陪我
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇窗 能讓視野不同
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇門 讓世界開闊
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇窗 能讓視野不同
+與你分享的快樂 勝過獨自擁有
+至今我仍深深感動
+好友如同一扇門 讓世界變開闊</div>
+            </div>
+        </div>
+
+        <!-- 第二首歌：乾杯 -->
+        <div class="song-card">
+            <h2 class="song-title">🎵 第二首：乾杯 (五月天)</h2>
+            <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
+            
+            <div class="video-wrapper">
+                <!-- 內嵌雲端硬碟影片 (注意最後是 /preview) -->
+                <iframe src="https://drive.google.com/file/d/1vwh3dnsoJzuovwmS4m98RjQWr_rmjO0x/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+            </div>
+
+            <!-- 防呆備用按鈕 -->
+            <div class="youtube-btn-container">
+                <a href="https://www.youtube.com/watch?v=5FfEhoyWoC0&list=RD5FfEhoyWoC0&start_radio=1" target="_blank" class="youtube-btn">
+                    👉 如果影片無法播放，請點此前往 YouTube 聆聽 👈
+                </a>
+            </div>
+
+            <div class="lyrics-container">
+                <p class="lyrics-hint">👇 歌詞在下方（手指可以上下滑動看歌詞）</p>
+                <div class="lyrics-box">作詞：阿信     作曲：阿信
+
+會不會 有一天 時間真的能倒退
+退回 你的我的 回不去的 悠悠的歲月
+也許會 有一天 世界真的有終點
+也要和你舉起回憶釀的甜
+和你再乾一杯
+
+如果說 要我選出 代表青春 那個畫面
+浮現了 那滴眼淚 那片藍天 那年畢業
+那一張 邊哭邊笑 還要擁抱 是你的臉
+想起來 可愛可憐 可歌可泣 可是多懷念
+
+懷念總是 突然懷念 不談條件
+當回憶 衝破考卷 衝出歲月 在我眼前
+我和你 留著汗水 喝著汽水 在操場邊
+說好了 無論如何 一起走到 未來的世界
+
+現在就是 那個未來 那個世界
+為什麼 你的身邊 我的身邊 不是同一邊
+友情曾像 諾亞方舟 堅強誓言
+只是我 望著海面 等著永遠 模糊了視線
+
+會不會 有一天 時間真的能倒退
+退回 你的我的 回不去的 悠悠的歲月
+也許會 有一天 世界真的有終點
+也要和你舉起回憶釀的甜
+和你再乾一杯
+
+這些年 買了四輪 買了手錶 買了單眼
+卻發現 追不到的 停不了的 還是那些
+人生是 只有認命 只能宿命 只好宿醉
+只剩下 高的笑點 低的哭點 卻沒成熟點
+
+成熟就是 幻想幻滅 一場磨鍊
+為什麼 只有夢想 越磨越小 小到不見
+有時候 好想流淚 好想流淚 卻沒眼淚
+期待會 你會不會 他會不會 開個同學會
+
+他在等你 你在等我 我在等誰
+又是誰 孩子沒睡 電話沒電 心情沒準備
+天空不斷 黑了又亮 亮了又黑
+那光陰 滄海桑田 遠走高飛 再沒力氣追
+
+會不會 有一天 時間真的能倒退
+退回 你的我的 回不去的 悠悠的歲月
+也許會 有一天 世界真的有終點
+也要和你舉起回憶釀的甜
+和你再乾一杯
+
+間奏
+
+會不會 有一天 時間真的能倒退
+退回 你的我的 回不去的 悠悠的歲月
+也許會 有一天 世界真的有終點
+也要和你舉起回憶釀的甜
+和你再乾一杯
+
+終究會 有一天 我們都變成昨天
+是你 陪我走過 一生一回
+匆匆的人間
+
+有一天就是今天
+今天就是有一天
+說出一直沒說 對你的感謝
+和你再乾一杯
+再乾一杯永遠
+喝了就能萬歲
+歲歲和年年
+
+時間都停了 他們都回來了
+懷念的人啊 等你的來到
+
+時間都停了 他們都回來了
+懷念的人啊 等你的來到</div>
+            </div>
+        </div>
+
+        <!-- 第三首歌：逆風飛翔 -->
+        <div class="song-card">
+            <h2 class="song-title">🎵 第三首：逆風飛翔 (蕭煌奇)</h2>
+            <div class="instruction">👇 請點擊下方影片中間的「▶️ 播放鍵」聽歌</div>
+            
+            <div class="video-wrapper">
+                <!-- 內嵌雲端硬碟影片 (注意最後是 /preview) -->
+                <iframe src="https://drive.google.com/file/d/11HAlRCUV6EkpolNkAft03QiisE2OQVSI/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+            </div>
+
+            <!-- 防呆備用按鈕 -->
+            <div class="youtube-btn-container">
+                <a href="https://www.youtube.com/watch?v=maSoMtA8Ilo&list=RDmaSoMtA8Ilo&start_radio=1" target="_blank" class="youtube-btn">
+                    👉 如果影片無法播放，請點此前往 YouTube 聆聽 👈
+                </a>
+            </div>
+
+            <div class="lyrics-container">
+                <p class="lyrics-hint">👇 歌詞在下方（手指可以上下滑動看歌詞）</p>
+                <div class="lyrics-box">作詞：賴鈺婷     作曲：蕭煌奇
+
+不夠聰明 你說你 注定失敗很徹底
+很努力 總是得不到肯定
+
+不夠幸運 你說你 注定飛不上天際
+就快要 失去繼續的力氣
+
+親愛的寶貝有我陪著你 鼓起勇氣拋開傷心
+因為青春就該好好闖一闖 要飛翔 要尋找真理想
+
+不要 害怕失敗會受傷
+努力啊乘著夢想往前 別說累
+
+總有人在你身旁 為你加油啊
+逆著風也要飛翔 很辛苦也要堅強
+
+帶著夢想去飛翔
+努力啊乘著夢想往前 別怕黑
+
+總有人在你身旁 為你祝福啊
+逆著風也要盼望 很受傷也要勇敢 飛翔
+
+～＊間奏＊～
+
+也許會失望也許很受傷 跌跌撞撞失去方向
+但是青春就該好好闖一闖 去飛翔 去尋找真理想
+
+不要 害怕失敗會受傷
+努力啊乘著夢想往前 別說累
+
+總有人在你身旁 為你加油啊
+逆著風也要飛翔 很辛苦也要堅強
+
+帶著夢想去飛翔
+努力啊乘著夢想往前 別怕黑
+
+總有人在你身旁 為你祝福啊
+逆著風也要盼望 很受傷也要勇敢
+
+不要 害怕失敗會受傷
+努力啊乘著夢想往前 別說累
+
+總有人在你身旁 為你加油啊
+逆著風也要飛翔 很辛苦也要堅強
+
+帶著夢想去飛翔
+努力啊乘著夢想往前 別怕黑
+
+總有人在你身旁 為你祝福啊
+逆著風也要盼望 很受傷也要勇敢
+
+親愛的你 別在意 別管一路風和雨
+做自己 星光多麼的美麗
+
+安安靜靜 我和你 笑看那些不如意
+只要你 不怕風雨 你看人生多麼的 美麗</div>
+            </div>
+        </div>
+
+        <!-- 結尾再次提醒 -->
+        <div class="footer-reminder">
+            📣 聽完三首歌了嗎？<br><br>
+            請記得關掉這個網頁，<br>
+            回到「進修部 301 的 LINE 群組」<br>
+            進行投票喔!
+        </div>
+
+    </div>
+
+</body>
+</html>
